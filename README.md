@@ -26,3 +26,10 @@ Debugging binary protocols and file formats benefits from a quick, dependency-fr
 - **Byte validation**: every value must be an integer in 0..255. A `Uint8Array` satisfies this by construction; a hand-built `Array` of `Number`s will throw `RangeError` on anything outside the range, including non-integers.
 
 The input contract is the awkward edge. If you pass a JS `Array` built from `charCodeAt` on a string containing characters above U+00FF, you'll get a `RangeError` per-byte rather than silently truncating. That is intentional.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
