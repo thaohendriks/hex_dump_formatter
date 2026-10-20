@@ -1,6 +1,6 @@
 {
   "name": "hex-dump-formatter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Formats binary data into canonical hex dump output with offset, hex bytes, and ASCII representation.",
   "type": "module",
   "main": "src/index.js",
